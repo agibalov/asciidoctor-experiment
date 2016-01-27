@@ -18,7 +18,7 @@ public class AppTest {
     public void helloWorldShouldSayHelloWorld() {
         App.main(new String[] {});
 
-        assertEquals("Hello Asshole!\n", systemOutRule.getLog());
+        assertEquals("Hello World!\n", systemOutRule.getLog());
         documentation.text("consoleOutput", systemOutRule.getLog());
     }
 }
