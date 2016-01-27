@@ -1,0 +1,25 @@
+:source-highlighter: highlightjs
+
+= Writing a Hello World in Java
+
+So, you do it like this:
+
+[source,java]
+----
+include::{sourceDir}/main/java/me/loki2302/App.java[tag=helloworld]
+----
+
+Take a close look here:
+
+[source,java,indent=0]
+----
+include::{sourceDir}/main/java/me/loki2302/App.java[tag=main]
+----
+
+that's what actually does the trick. If you compile and run this program, you're very like to see something like this:
+
+----
+include::{snippetsDir}/AppTest/helloWorldShouldSayHelloWorld/consoleOutput.txt[]
+----
+
+Thanks for reading.

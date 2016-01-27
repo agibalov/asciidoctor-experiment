@@ -1,0 +1,23 @@
+:source-highlighter: highlightjs
+
+= Person Service
+
+The `PersonService` has quite a straightforward interface:
+
+[source,java]
+----
+include::{sourceDir}/main/java/me/loki2302/PersonService.java[tag=interface]
+----
+
+If you first create an instance of `PersonService` and then make a call to `getPersonById()`:
+
+[source,java,indent=0]
+----
+include::{sourceDir}/test/java/me/loki2302/PersonServiceTest.java[tag=example]
+----
+
+the result will be:
+
+include::{snippetsDir}/PersonServiceTest/personServiceShouldReturnPerson/person.adoc[]
+
+The end.

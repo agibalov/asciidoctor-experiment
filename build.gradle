@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+    }
+}
+
+group 'me.loki2302'
+version '1.0-SNAPSHOT'
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '2.9'
+  distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
+}
+
+apply plugin: 'java'
+apply plugin: 'org.asciidoctor.convert'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+    testCompile 'com.github.stefanbirkner:system-rules:1.15.1'
+    testCompile 'com.github.spullara.mustache.java:compiler:0.9.1'
+    testCompile 'com.google.guava:guava:19.0'
+}
+
+ext {
+    snippetsDir = file('build/generated-snippets')
+}
+
+test {
+    systemProperty 'snippetsDir', snippetsDir
+    outputs.dir snippetsDir
+}
+
+asciidoctor {
+    sourceDir 'src/main/asciidoc'
+    sources {
+        include 'helloWorld.adoc'
+        include 'personService.adoc'
+    }
+    attributes = [
+            sourceDir: file('src'),
+            snippetsDir: snippetsDir
+            ]
+    dependsOn test
+}
