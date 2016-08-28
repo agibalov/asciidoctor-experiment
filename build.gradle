@@ -4,7 +4,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.2'
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
+        classpath 'com.github.jruby-gradle:jruby-gradle-plugin:1.2.1'
     }
 }
 
@@ -18,6 +19,7 @@ task wrapper(type: Wrapper) {
 
 apply plugin: 'java'
 apply plugin: 'org.asciidoctor.convert'
+apply plugin: 'com.github.jruby-gradle.base'
 
 sourceCompatibility = 1.8
 
@@ -30,6 +32,7 @@ dependencies {
     testCompile 'com.github.stefanbirkner:system-rules:1.15.1'
     testCompile 'com.github.spullara.mustache.java:compiler:0.9.1'
     testCompile 'com.google.guava:guava:19.0'
+    gems 'rubygems:asciidoctor-diagram:1.4.0'
 }
 
 ext {
@@ -46,10 +49,13 @@ asciidoctor {
     sources {
         include 'helloWorld.adoc'
         include 'personService.adoc'
+        include 'diagram-test.adoc'
     }
     attributes = [
             sourceDir: file('src'),
             snippetsDir: snippetsDir
             ]
-    dependsOn test
+    requires = ['asciidoctor-diagram']
+    gemPath = jrubyPrepare.outputDir
+    dependsOn jrubyPrepare, test
 }
