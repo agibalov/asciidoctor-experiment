@@ -1,0 +1,6 @@
+= Extension hello world
+
+[dummy]
+Hello world
+
+End.

@@ -33,6 +33,7 @@ dependencies {
     testCompile 'com.github.spullara.mustache.java:compiler:0.9.1'
     testCompile 'com.google.guava:guava:19.0'
     gems 'rubygems:asciidoctor-diagram:1.4.0'
+    compile 'org.asciidoctor:asciidoctorj:1.5.4'
 }
 
 ext {
@@ -50,6 +51,7 @@ asciidoctor {
         include 'helloWorld.adoc'
         include 'personService.adoc'
         include 'diagram-test.adoc'
+        include 'extension-test.adoc'
     }
     attributes = [
             sourceDir: file('src'),
@@ -58,4 +60,10 @@ asciidoctor {
     requires = ['asciidoctor-diagram']
     gemPath = jrubyPrepare.outputDir
     dependsOn jrubyPrepare, test
+
+    extensions {
+        block(name: 'dummy', contexts: [':paragraph']) { parent, reader, attributes ->
+            createBlock(parent, 'paragraph', 'Extension says hi', attributes, [:])
+        }
+    }
 }
