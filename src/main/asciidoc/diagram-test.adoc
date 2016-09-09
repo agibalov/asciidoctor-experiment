@@ -49,3 +49,12 @@ digraph g {
     d -> a
 }
 ----
+
+== graphviz #2
+
+This graph has been generated dynamically by test run.
+
+[graphviz, example2, svg]
+----
+include::{snippetsDir}/DotTest/generateDummyGraph/dummyGraph.txt[]
+----

@@ -5,6 +5,10 @@ import com.github.mustachejava.Mustache;
 import com.github.mustachejava.MustacheFactory;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
+import org.jgrapht.DirectedGraph;
+import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.graph.DefaultDirectedGraph;
+import org.jgrapht.graph.DefaultEdge;
 import org.junit.rules.TestRule;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
@@ -57,6 +61,25 @@ public class Documentation implements TestRule {
             context.writeTextToFile(name, text);
         } catch (IOException e) {
             throw new RuntimeException();
+        }
+    }
+
+    public void dummyDotGraph(String name) throws IOException {
+        DirectedGraph<String, DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
+        graph.addVertex("aaa");
+        graph.addVertex("bbb");
+        graph.addVertex("ccc");
+        graph.addEdge("aaa", "bbb");
+        graph.addEdge("aaa", "ccc");
+
+        DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>(
+                vertex -> vertex,
+                vertex -> vertex,
+                edge -> "omg");
+
+        try(StringWriter sw = new StringWriter()) {
+            exporter.export(sw, graph);
+            context.writeTextToFile(name, sw.toString());
         }
     }
 
