@@ -6,7 +6,9 @@ import com.github.mustachejava.MustacheFactory;
 import com.google.common.base.Charsets;
 import com.google.common.io.Resources;
 import org.jgrapht.DirectedGraph;
+import org.jgrapht.VertexFactory;
 import org.jgrapht.ext.DOTExporter;
+import org.jgrapht.generate.RandomGraphGenerator;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
 import org.junit.rules.TestRule;
@@ -21,7 +23,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 public class Documentation implements TestRule {
     private final String outputDirectory;
@@ -80,6 +84,31 @@ public class Documentation implements TestRule {
         try(StringWriter sw = new StringWriter()) {
             exporter.export(sw, graph);
             context.writeTextToFile(name, sw.toString());
+        }
+    }
+
+    public void randomDotGraph(String name) throws IOException {
+        DirectedGraph<String, DefaultEdge> graph = new DefaultDirectedGraph<>(DefaultEdge.class);
+        RandomGraphGenerator<String, DefaultEdge> generator = new RandomGraphGenerator<>(20, 80, 1);
+        generator.generateGraph(graph, new MyVertexFactory(), new HashMap<>());
+
+        DOTExporter<String, DefaultEdge> exporter = new DOTExporter<>(
+                vertex -> vertex,
+                vertex -> vertex,
+                edge -> "omg");
+
+        try(StringWriter sw = new StringWriter()) {
+            exporter.export(sw, graph);
+            context.writeTextToFile(name, sw.toString());
+        }
+    }
+
+    private static class MyVertexFactory implements VertexFactory<String> {
+        private int x = 0;
+
+        @Override
+        public String createVertex() {
+            return "n" + (++x);
         }
     }
 

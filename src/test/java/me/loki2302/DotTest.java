@@ -14,4 +14,9 @@ public class DotTest {
     public void generateDummyGraph() throws IOException {
         documentation.dummyDotGraph("dummyGraph");
     }
+
+    @Test
+    public void generateRandomGraph() throws IOException {
+        documentation.randomDotGraph("randomGraph");
+    }
 }

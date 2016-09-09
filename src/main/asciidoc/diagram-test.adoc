@@ -58,3 +58,12 @@ This graph has been generated dynamically by test run.
 ----
 include::{snippetsDir}/DotTest/generateDummyGraph/dummyGraph.txt[]
 ----
+
+== graphviz #3
+
+This graph has been generated dynamically by test run.
+
+[graphviz, example3, svg]
+----
+include::{snippetsDir}/DotTest/generateRandomGraph/randomGraph.txt[]
+----
