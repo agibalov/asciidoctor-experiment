@@ -22,7 +22,7 @@
      +-----------------------------------+
 ----
 
-== plantuml
+== plantuml class diagram
 
 requires dot: `sudo apt-get install graphviz`
 
@@ -36,6 +36,50 @@ class PlantUmlBlock
 BlockProcessor <|-- DiagramBlock
 DiagramBlock <|-- DitaaBlock
 DiagramBlock <|-- PlantUmlBlock
+----
+
+== plantuml activity diagram
+
+[plantuml, diagram-activity, png]
+----
+title Conditional - Activity Diagram
+
+
+start
+
+:Eat Hot Wings;
+note right: This is a note to the right
+
+:Drink Homebrew;
+note left: This is a note to the left
+
+if (Turn On The Game?) then (yes)
+  :__Having Fun__!!!;
+else (no)
+  :Not Having Fun;
+endif
+
+:Go To Bed;
+
+stop
+----
+
+== plantuml sequence diagram
+
+[plantuml, diagram-sequence, png]
+----
+title "Messages - Sequence Diagram"
+
+actor User
+boundary "Web GUI" as GUI
+control "Shopping Cart" as SC
+entity Widget
+database Widgets
+
+User -> GUI : To boundary
+GUI -> SC : To control
+SC -> Widget : To entity
+Widget -> Widgets : To database
 ----
 
 == graphviz
@@ -59,11 +103,20 @@ This graph has been generated dynamically by test run.
 include::{snippetsDir}/DotTest/generateDummyGraph/dummyGraph.txt[]
 ----
 
-== graphviz #3
+== graphviz dot
 
 This graph has been generated dynamically by test run.
 
-[graphviz, example3, svg]
+[graphviz, example3, svg, layout=dot]
+----
+include::{snippetsDir}/DotTest/generateRandomGraph/randomGraph.txt[]
+----
+
+== graphviz neato
+
+This graph has been generated dynamically by test run.
+
+[graphviz, example4, svg, layout=neato]
 ----
 include::{snippetsDir}/DotTest/generateRandomGraph/randomGraph.txt[]
 ----

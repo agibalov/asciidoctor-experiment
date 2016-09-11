@@ -1,0 +1,22 @@
+= Stuff
+
+== Class diagram (Plant UML)
+
+[plantuml, cd-plantuml, png]
+----
+include::{snippetsDir}/ClassDiagramGeneratorsTest/generatePlantUmlClassDiagram/classDiagram.txt[]
+----
+
+== Class diagram (Graphviz/Dot)
+
+[graphviz, cd-dot, svg]
+----
+include::{snippetsDir}/ClassDiagramGeneratorsTest/generateDotClassDiagram/classDiagram.txt[]
+----
+
+== Class diagram (Graphviz/Neato)
+
+[graphviz, cd-neato, svg, layout=neato]
+----
+include::{snippetsDir}/ClassDiagramGeneratorsTest/generateDotClassDiagram/classDiagram.txt[]
+----
