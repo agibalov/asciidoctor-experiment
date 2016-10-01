@@ -1,6 +1,9 @@
 = Extension hello world
 
-[dummy]
-Hello world
+[dummy-inline]
+I am dummy-inline extension input
+
+[dummy-buildsrc]
+I am dummy-buildsrc extension input
 
 End.
