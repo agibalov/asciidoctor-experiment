@@ -1,0 +1,17 @@
+<% var m = JSON.parse(model); %>
+
+<svg id="pie-<%= m.id %>" style="width: 400px; height: 300px;"></svg>
+
+<script>
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+                .x(function(d) { return d.key; })
+                .y(function(d) { return d.value; });
+
+        d3.select('#pie-<%= m.id %>')
+                .datum(<%- JSON.stringify(m.data) %>)
+                .call(chart);
+
+        return chart;
+    });
+</script>

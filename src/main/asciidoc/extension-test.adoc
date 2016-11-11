@@ -6,7 +6,33 @@ I am dummy-inline extension input
 [dummy-buildsrc]
 I am dummy-buildsrc extension input
 
-[html-buildsrc]
-Hello there
+== NVD3 charts
+
+Chart one:
+
+[pie]
+----
+{
+  "id": "test-1",
+  "data": [
+    { "key": "A", "value": 1 },
+    { "key": "B", "value": 2 }
+  ]
+}
+----
+
+Chart two:
+
+[pie]
+----
+{
+  "id": "test-2",
+  "data": [
+    { "key": "A", "value": 1 },
+    { "key": "B", "value": 2 },
+    { "key": "The rest", "value": 10 }
+  ]
+}
+----
 
 End.
