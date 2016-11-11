@@ -8,6 +8,8 @@ public class DummyExtensionRegistry implements ExtensionRegistry {
     @Override
     public void register(Asciidoctor asciidoctor) {
         JavaExtensionRegistry javaExtensionRegistry = asciidoctor.javaExtensionRegistry();
-        javaExtensionRegistry.block("dummy-buildsrc", DummyPlugin.class);
+        javaExtensionRegistry.block("dummy-buildsrc", DummyBlockProcessor.class);
+        javaExtensionRegistry.block("html-buildsrc", HtmlBlockProcessor.class);
+        javaExtensionRegistry.docinfoProcessor(DummyDocinfoProcessor.class);
     }
 }

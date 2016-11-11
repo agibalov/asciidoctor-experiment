@@ -6,4 +6,7 @@ I am dummy-inline extension input
 [dummy-buildsrc]
 I am dummy-buildsrc extension input
 
+[html-buildsrc]
+Hello there
+
 End.
