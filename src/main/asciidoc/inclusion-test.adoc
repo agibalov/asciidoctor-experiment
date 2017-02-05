@@ -1,0 +1,7 @@
+:source-highlighter: highlightjs
+
+= Include multiple adocs using glob expression
+
+include::dummy://src/main/asciidoc/{helloWorld,stuff}.adoc[]
+
+End.

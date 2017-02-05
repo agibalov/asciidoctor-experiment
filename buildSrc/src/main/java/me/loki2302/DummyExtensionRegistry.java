@@ -10,6 +10,7 @@ public class DummyExtensionRegistry implements ExtensionRegistry {
         JavaExtensionRegistry javaExtensionRegistry = asciidoctor.javaExtensionRegistry();
         javaExtensionRegistry.block("dummy-buildsrc", DummyBlockProcessor.class);
         javaExtensionRegistry.docinfoProcessor(DummyDocinfoProcessor.class);
+        javaExtensionRegistry.includeProcessor(DummyIncludeProcessor.class);
 
         javaExtensionRegistry.block("pie", Nvd3BlockProcessor.class);
         javaExtensionRegistry.docinfoProcessor(Nvd3DocinfoProcessor.class);
